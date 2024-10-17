@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        .gender-options {
+            display: flex;
+            align-items: center;
+            gap: 20px; 
+        }
+        .container {
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            padding-left: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            user-select: none;
+        }
+        .container input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #ccc;
+            border-radius: 50%;
+        }
+        .container input:checked ~ .checkmark {
+            background-color: #4CAF50;
+        }
+        .form-container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px; 
+            border: 2px solid #ccc; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+        .form-container1 {
+            width: 300px;
+            height: 100px;
+            margin: 0 auto; 
+            padding: 20px; 
+            border: 2px solid #ccc; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        label {
+            font-weight: bold;
+            font-size: 14px;
+        }
+        input {
+            padding: 10px; 
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box; 
+        }
+        button {
+            padding: 10px 15px; 
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .terms-container {
+            display: flex;
+            align-items: center;
+        }
+        .terms-container input {
+            margin-right: 10px;
+        }
+    </style>
+
+    <script>
+        function validateForm() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm_password").value;
+            var terms = document.getElementById("terms").checked;
+
+            
+            if (password !== confirmPassword) {
+                alert("รหัสผ่านไม่ตรงกัน กรุณากรอกให้ตรงกัน");
+                return false; 
+            }
+
+            
+            if (!terms) {
+                alert("กรุณายอมรับข้อตกลงก่อนส่งฟอร์ม");
+                return false;
+            }
+
+            return true; 
+        }
+    </script>
+</head>
+<body>
+    <!-- ฟอร์มส่งข้อมูล -->
+    <div class="form-container">
+        <form action="index2.php" method="post" onsubmit="return validateForm()">
+            <h1>Personal Info</h1>
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required>
+
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required>
+
+            <label for="gender">Gender:</label>
+            <div class="gender-options">
+                <label class="container">Male
+                    <input type="radio" name="gender" value="Male" required>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Female
+                    <input type="radio" name="gender" value="Female" required>
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+
+            <label for="birthdate">Birthdate:</label>
+            <input type="date" id="birthdate" name="birthdate" required>
+        </form>
+    </div>
+
+    <div class="form-container">
+        <form action="index2.php" method="post" onsubmit="return validateForm()">
+            <h1>Account Info</h1>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <div class="terms-container">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the Terms of Service and Privacy Policy.</label>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

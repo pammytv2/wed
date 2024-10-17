@@ -1,0 +1,74 @@
+<head>
+    <style>
+      body {
+        color: rgb(255, 145, 0);
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+      .frame {
+        width: 200;
+        border-width: 1px;
+        border-color: #000000;
+        border-style: solid;
+        padding: 5px;
+      }
+      .box_green{
+        width: 40;
+        background-color: green ;
+      }
+      .box_yellow{
+        width: 40;
+        background-color: yellow;
+      }
+      .box_red{
+        width: 40;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <div style="font-size: large">
+        MR. Natchaphon Student ID: 64543206030-1
+      </div>
+      <div style="font-size: large">
+        Multiply Program
+      </div>
+      <div class="frame" style="font-size: small; color: #000000">
+        <?php
+        $mutiply = 30;
+        for($i = 1 ; $i <= 12 ; $i++ ) {
+          echo "<div align = left>12 * ".$i." = ".$mutiply*$i."</div>";
+        }
+        ?>
+      </div><br>
+      <div style="font-size: large">
+        Calculate Grade Program
+      </div>
+      <div class="frame" style="font-size: small; color: #000000">
+        <form method=POST action=>Lab664543206030-1.php
+          Score : <input type="text" name="num" style="background:#D2E0FB; border-color: #F5F5F5; width: 100"/>
+          <input type=submit value=send>
+        </form>
+        <?php
+          $score = $_POST['num'];
+          if ($score >= 80) {
+            echo '<div class="box_green">A</div>' ;
+          } else if ($score >= 75) {
+            echo '<div class="box_green">B+</div>' ;
+          } else if ($score >= 70) {
+            echo '<div class="box_green">B</div>' ;
+          } else if ($score >= 65) {
+            echo '<div class="box_yellow">C+</div>' ;
+          } else if ($score >= 60) {
+            echo '<div class="box_yellow">C</div>' ;
+          } else if ($score >= 55) {
+            echo '<div class="box_yellow">D+</div>' ;
+          } else if ($score >= 50) {
+            echo '<div class="box_yellow">D</div>' ;
+          } else {
+            echo '<div class="box_red">F</div>' ;
+          }
+        ?>
+      </div>
+    </center>
+  </body>
